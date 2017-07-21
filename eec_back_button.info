@@ -1,0 +1,10 @@
+name = EEC back button link
+description = EEC back button link custom pane.
+package = EEC Custom
+core = 7.x
+
+files[] = eec_back_button.module
+files[] = eec_back_button.admin.inc
+
+dependencies[] = ctools
+

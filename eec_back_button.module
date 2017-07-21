@@ -1,0 +1,52 @@
+<?php
+/**
+ * Implements hook_ctools_plugin_directory().
+ * @param $owner
+ * @param $plugin_type
+ * @return string
+ */
+function eec_back_button_ctools_plugin_directory($owner, $plugin_type) {
+  if ($owner == 'ctools' && $plugin_type == 'content_types') {
+    return 'plugins/content_types';
+  }
+}
+
+/**
+ * Implements of hook_permission().
+ */
+function eec_back_button_permission() {
+    return array(
+        'administer eec back button' => array(
+            'title' => t('Administer EEC back button link module'),
+            'description' => t('Perform administration tasks for EEC back button link.'),
+        ),
+    );
+}
+
+/**
+ * Implements of hook_menu().
+ */
+function eec_back_button_menu() {
+    $items = array();
+
+    $items['admin/config/custom'] = array(
+        'title' => 'ECC customizations',
+        'description' => 'Settings related to custom modules.',
+        'position' => 'left',
+        'weight' => -15,
+        'page callback' => 'system_admin_menu_block_page',
+        'access arguments' => array('access administration pages'),
+        'file' => 'system.admin.inc',
+    );
+
+    $items['admin/config/custom/eec_back_button'] = array(
+        'title' => 'EEC back button link',
+        'description' => 'Configure default settings for the back button link custom module.',
+        'page callback' => 'drupal_get_form',
+        'page arguments' => array('eec_back_button_settings_form'),
+        'access arguments' => array('administer eec back button'),
+        'file' => 'eec_back_button_link.admin.inc',
+    );
+
+    return $items;
+}
