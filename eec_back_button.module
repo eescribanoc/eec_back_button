@@ -29,17 +29,7 @@ function eec_back_button_permission() {
 function eec_back_button_menu() {
     $items = array();
 
-    $items['admin/config/custom'] = array(
-        'title' => 'ECC customizations',
-        'description' => 'Settings related to custom modules.',
-        'position' => 'left',
-        'weight' => -15,
-        'page callback' => 'system_admin_menu_block_page',
-        'access arguments' => array('access administration pages'),
-        'file' => 'system.admin.inc',
-    );
-
-    $items['admin/config/custom/eec_back_button'] = array(
+    $items['admin/config/content/eec_back_button'] = array(
         'title' => 'EEC back button link',
         'description' => 'Configure default settings for the back button link custom module.',
         'page callback' => 'drupal_get_form',
